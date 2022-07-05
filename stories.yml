@@ -1,0 +1,51 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: wellness story 1
+  steps:
+  - intent: trigger_bot
+  - action: utter_exercise
+  - intent: exercise_yes
+  - action: utter_yes
+  - active_loop: trigger_bot
+  - slot_was_set:
+    - requested slot: exercise
+  - slot_was_set: 
+  - exercise: running
+  - slot_was_set:
+    - requested slot: sleep
+  - slot_was_set: 
+  - sleep: 5 hours
+  - slot_was_set:
+    - requested slot: goal
+  - slot_was_set: 
+  - goal: going to the gym
+  - action: action_display_survey
