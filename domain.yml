@@ -1,0 +1,113 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - trigger_bot
+  - exercise_yes
+  - exercise_no
+  - typeof_exercise
+  - sleep_time
+  - stress_level
+  - set_goal
+
+entities:
+- exercise
+- sleep
+- goal
+
+slots:
+  exercise:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: exercise
+      - active_loop: trigger_bot
+        requested_slot: exercise
+ 
+  sleep:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: sleep
+
+  goal:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: goal
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_exercise:
+  - text: " did you exercise yesterday?"
+    buttons:
+    - title: "yes"
+      payload: "/exercise_yes"
+    - title: "no"
+      payload: "/exercise_no"
+
+  utter_yes:
+  - text: "what kind of exercise did you do?"
+
+  utter_no:
+  - text: "Don't sweat it if you didn't run a marathon"
+
+  utter_sleep:
+  - text: "how much sleep did you get last night?"
+
+  utter_diet:
+  - text: "Did you stick to a healthy diet yesterday?"
+    buttons:
+    - title: "yes"
+      payload: "/affirm"
+    - title: "no"
+      payload: "/deny"
+
+  utter_stress:
+  - text: "What is your stress level right now ?"
+    buttons:
+    - title: "low"
+      payload: "/stresslevel"
+    - title: "medium"
+      payload: "/stresslevel"
+    - title:  "high"
+      payload: "/stresslevel"
+
+  utter_goal:
+  - text: "Setting goals - even small ones - is a great way to focus your day. What do you want to accomplish today 🥇 ?"
+  
+  
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+- action_display_survey
+
