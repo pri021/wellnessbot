@@ -28,6 +28,7 @@ slots:
     mappings:
       - type: from_entity
         entity: exercise
+        conditions:
       - active_loop: trigger_bot
         requested_slot: exercise
  
@@ -37,6 +38,9 @@ slots:
     mappings:
       - type: from_entity
         entity: sleep
+        conditions:
+      - active_loop: trigger_bot
+        requested_slot: sleep
 
   goal:
     type: text
@@ -44,6 +48,9 @@ slots:
     mappings:
       - type: from_entity
         entity: goal
+        conditions:
+      - active_loop: trigger_bot
+        requested_slot: goal
 
 responses:
   utter_greet:
