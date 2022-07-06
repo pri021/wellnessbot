@@ -20,6 +20,7 @@ entities:
 - exercise
 - sleep
 - goal
+- diet
 
 slots:
   exercise:
@@ -129,6 +130,7 @@ forms:
     - exercise
     - sleep
     - goal
+    - diet
 
 session_config:
   session_expiration_time: 60
