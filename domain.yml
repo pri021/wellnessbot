@@ -29,7 +29,7 @@ slots:
       - type: from_entity
         entity: exercise
         conditions:
-      - active_loop: trigger_bot
+      - active_loop: wellness_form
         requested_slot: exercise
  
   sleep:
@@ -39,8 +39,21 @@ slots:
       - type: from_entity
         entity: sleep
         conditions:
-      - active_loop: trigger_bot
+      - active_loop: wellness_form
         requested_slot: sleep
+  diet: 
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        value: true
+        intent: affirm
+      - type: from_intent
+        value: false
+        intent: deny
+        conditions:
+      - active_loop: wellness_form
+        requested_slot: diet
 
   goal:
     type: text
@@ -49,7 +62,7 @@ slots:
       - type: from_entity
         entity: goal
         conditions:
-      - active_loop: trigger_bot
+      - active_loop: wellness_form
         requested_slot: goal
 
 responses:
@@ -110,11 +123,16 @@ responses:
   utter_goal:
   - text: "Setting goals - even small ones - is a great way to focus your day. What do you want to accomplish today 🥇 ?"
   
-  
+forms:
+  wellness_form:
+    required_slots:
+    - exercise
+    - sleep
+    - goal
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 
 actions:
 - action_display_survey
-
