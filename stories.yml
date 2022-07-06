@@ -35,7 +35,7 @@ stories:
   - action: utter_exercise
   - intent: exercise_yes
   - action: utter_yes
-  - active_loop: trigger_bot
+  - active_loop: wellness_form
   - slot_was_set:
     - requested slot: exercise
   - slot_was_set: 
