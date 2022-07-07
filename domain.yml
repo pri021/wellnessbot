@@ -8,6 +8,9 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - inquire_weather
+  - remember_city
+  - inquire_weather_wocity
   - trigger_bot
   - exercise_yes
   - exercise_no
@@ -15,14 +18,37 @@ intents:
   - sleep_time
   - stress_level
   - set_goal
+ 
 
 entities:
+- place
 - exercise
 - sleep
 - goal
 - diet
-
+- did_exercise
 slots:
+  place:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: place
+  
+  did_exercise: 
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        value: true
+        intent: affirm
+      - type: from_intent
+        value: false
+        intent: deny
+        conditions:
+      - active_loop: wellness_form
+        requested_slot: did_exercise
+  
   exercise:
     type: text
     influence_conversation: true
@@ -86,6 +112,9 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
+  utter_askcity:
+  - text: "which city do you want to know the weather of?"
+
   utter_exercise:
   - text: " did you exercise yesterday?"
     buttons:
@@ -100,10 +129,10 @@ responses:
   utter_no:
   - text: "Don't sweat it if you didn't run a marathon"
 
-  utter_sleep:
+  utter_ask_sleep:
   - text: "how much sleep did you get last night?"
 
-  utter_diet:
+  utter_ask_diet:
   - text: "Did you stick to a healthy diet yesterday?"
     buttons:
     - title: "yes"
@@ -111,7 +140,7 @@ responses:
     - title: "no"
       payload: "/deny"
 
-  utter_stress:
+  utter_ask_stress:
   - text: "What is your stress level right now ?"
     buttons:
     - title: "low"
@@ -121,7 +150,7 @@ responses:
     - title:  "high"
       payload: "/stresslevel"
 
-  utter_goal:
+  utter_ask_goal:
   - text: "Setting goals - even small ones - is a great way to focus your day. What do you want to accomplish today 🥇 ?"
   
 forms:
@@ -131,10 +160,13 @@ forms:
     - sleep
     - goal
     - diet
+    - did_exercise
+
+actions:
+- action_tell_weather
+- utter_greet
+- action_display_survey
 
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
-
-actions:
-- action_display_survey
