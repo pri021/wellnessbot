@@ -28,24 +28,66 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+  
+- story: weather story
+  steps:
+  - intent: inquire_weather
+    entities:
+    - place: mumbai
+  - slot_was_set:
+    - place: mumbai
+  - action: action_tell_weather
+
+- story: weather story 2
+  steps:
+  - intent: inquire_weather
+    entities:
+    - place: delhi
+  - slot_was_set:
+    - place: delhi
+  - action: action_tell_weather
+
+- story: weather story 3
+  steps:
+  - intent: remember_city
+    entities:
+    - place: paris
+  - slot_was_set:
+    - place: paris
+  - action: action_tell_weather
+
+- story: weather story 5
+  steps:
+  - intent: inquire_weather_wocity
+  - action: utter_askcity
+  - intent: remember_city
+    entities:
+    - place: noida
+  - slot_was_set:
+    - place: noida
+  - action: action_tell_weather
 
 - story: wellness story 1
   steps:
   - intent: trigger_bot
-  - action: utter_exercise
-  - intent: exercise_yes
-  - action: utter_yes
+  - action: wellness_form
   - active_loop: wellness_form
   - slot_was_set:
-    - requested slot: exercise
+    - requested_slot: did_exercise
   - slot_was_set: 
-  - exercise: running
+    - did_exercise: true
+  - slot_was_set: 
+    - exercise: running
   - slot_was_set:
-    - requested slot: sleep
+    - requested_slot: sleep
   - slot_was_set: 
-  - sleep: 5 hours
+    - sleep: 5 hours
   - slot_was_set:
-    - requested slot: goal
+    - requested_slot: diet
+  - slot_was_set:
+    - diet: true
+  - slot_was_set:
+    - requested_slot: goal
   - slot_was_set: 
-  - goal: going to the gym
+    - goal: going to the gym
   - action: action_display_survey
