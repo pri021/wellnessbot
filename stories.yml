@@ -76,6 +76,8 @@ stories:
     - requested_slot: did_exercise
   - slot_was_set: 
     - did_exercise: true
+  - slot_was_set:
+    - requested_slot: exercise
   - slot_was_set: 
     - exercise: running
   - slot_was_set:
@@ -91,3 +93,7 @@ stories:
   - slot_was_set: 
     - goal: going to the gym
   - action: action_display_survey
+  
+
+
+
