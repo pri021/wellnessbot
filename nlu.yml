@@ -188,6 +188,11 @@ nlu:
     - i slept [4 hours](sleep)
     - i played [football](exercise)
     - i went [swimming](exercise)
+    - i [want to go to gym](goal)
+    - finish my [assignment](goal)
+    - make my [project](goal)
+    - attend my [meeting](goal)
+    - go to [school](goal)
 
 
 - lookup: sleep
