@@ -179,6 +179,19 @@ nlu:
     - tennis
     - football
     - swimming
+
+- lookup: goal
+  examples: |
+    - go to school
+    - attend a meeting
+    - practice music
+    - go to my class
+    - drink lots of water
+    - finish my project
+    - go to the gym
+    - study 
+    - learn piano
+
 - intent: form
   examples:  |
     - I did [running](exercise)
@@ -223,6 +236,3 @@ nlu:
     - water the plants
     - walk 2 kms
     - go to the gym
-   
-
-
