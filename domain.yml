@@ -25,60 +25,62 @@ entities:
 - exercise
 - sleep
 - goal
-- diet
-- did_exercise
+
 slots:
   place:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: place
+    - type: from_entity
+      entity: place
   
   did_exercise: 
     type: bool
     influence_conversation: true
     mappings:
-      - type: from_intent
-        value: true
-        intent: affirm
-      - type: from_intent
-        value: false
-        intent: deny
-        conditions:
+    - type: from_intent
+      value: true
+      intent: affirm
+      conditions:
       - active_loop: wellness_form
         requested_slot: did_exercise
-  
+    - type: from_intent
+      value: false
+      intent: deny
+      conditions:
+      - active_loop: wellness_form
+        requested_slot: did_exercise
+
   exercise:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: exercise
-        conditions:
+    - type: from_entity
+      entity: exercise
+      conditions:
       - active_loop: wellness_form
         requested_slot: exercise
- 
+  
   sleep:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: sleep
-        conditions:
+    - type: from_entity
+      entity: sleep
+      conditions:
       - active_loop: wellness_form
         requested_slot: sleep
   diet: 
     type: bool
     influence_conversation: true
     mappings:
-      - type: from_intent
-        value: true
-        intent: affirm
-      - type: from_intent
-        value: false
-        intent: deny
-        conditions:
+    - type: from_intent
+      value: true
+      intent: affirm
+    - type: from_intent
+      value: false
+      intent: deny
+      conditions:
       - active_loop: wellness_form
         requested_slot: diet
 
@@ -86,9 +88,9 @@ slots:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: goal
-        conditions:
+    - type: from_entity
+      entity: goal
+      conditions:
       - active_loop: wellness_form
         requested_slot: goal
 
@@ -170,3 +172,4 @@ actions:
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
