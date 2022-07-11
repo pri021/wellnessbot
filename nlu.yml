@@ -16,7 +16,6 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-  
 
 - intent: goodbye
   examples: |
@@ -91,6 +90,54 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
+- intent: inquire_weather
+  examples: |
+    - what weather is it in [delhi](place)
+    - what is the weather in [Amsterdam](place)?
+    - whats the weather in [London](place)?
+    - tell me the weather in [Lisbon](place)
+    - what is the current weather in [Berlin](place)
+    - temperature in [mumbai](place)
+- lookup: place
+  examples: |
+    - delhi
+    - mumbai
+    - london
+    - lisbon
+    - amsterdam
+    - noida
+    - delhi
+    - goa
+    - chennai
+    - bangalore
+    - hyderabad
+    - ahmedabad
+    - chennai
+    - kolkata
+    - surat
+    - pune
+    - jaipur
+    - lucknow
+    - kanpur
+    - nagpur
+    - indore
+    - bhopal
+    - patna
+- intent: inquire_weather_wocity
+  examples: |
+    - tell me the weather
+    - whats the weather
+    - how is the weather
+    - tell me the temperature
+    - what's the weather condition
+    
+- intent: remember_city
+  examples: |
+    - in [Amsterdam](place)
+    - of [London](place)
+    - [mumbai](place)
+    - [delhi](place)
+    - i live in [paris](place)
 - intent: trigger_bot
   examples: |
     - i want to take the wellness survey
@@ -117,7 +164,7 @@ nlu:
     - na
     - nope
     
-- intent: typeof_exercise
+- lookup: exercise
   examples: |
     - yoga
     - running
@@ -132,8 +179,18 @@ nlu:
     - tennis
     - football
     - swimming
+- intent: form
+  examples:  |
+    - I did [running](exercise)
+    - I ran on the [treadmill](exercise)
+    - I slept [four hours](sleep)
+    - i did [stretching](exercise)
+    - i slept [4 hours](sleep)
+    - i played [football](exercise)
+    - i went [swimming](exercise)
 
-- intent: sleep_time
+
+- lookup: sleep
   examples: |
     - 5 hours
     - not at all
@@ -152,7 +209,7 @@ nlu:
     - medium
     - high
   
-- intent: set_goal
+- lookup: goal
   examples: |
     - finish my assignment
     - run 5 kms
@@ -161,7 +218,6 @@ nlu:
     - water the plants
     - walk 2 kms
     - go to the gym
-
    
 
 
