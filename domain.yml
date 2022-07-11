@@ -155,11 +155,12 @@ responses:
 forms:
   wellness_form:
     required_slots:
+    - did_exercise
     - exercise
     - sleep
     - goal
     - diet
-    - did_exercise
+    
 
 actions:
 - action_tell_weather
