@@ -117,19 +117,16 @@ responses:
   utter_askcity:
   - text: "which city do you want to know the weather of?"
 
-  utter_exercise:
+  utter_did_exercise:
   - text: " did you exercise yesterday?"
     buttons:
     - title: "yes"
-      payload: "/exercise_yes"
+      payload: "affirm"
     - title: "no"
-      payload: "/exercise_no"
-
-  utter_yes:
-  - text: "what kind of exercise did you do?"
-
-  utter_no:
-  - text: "Don't sweat it if you didn't run a marathon"
+      payload: "affirm" 
+  
+  utter_ask_excercise:
+  - text: "what kind of eercise did you do?"
 
   utter_ask_sleep:
   - text: "how much sleep did you get last night?"
@@ -172,4 +169,3 @@ actions:
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
-
