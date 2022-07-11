@@ -117,7 +117,7 @@ responses:
   utter_askcity:
   - text: "which city do you want to know the weather of?"
 
-  utter_did_exercise:
+  utter_ask_did_exercise:
   - text: " did you exercise yesterday?"
     buttons:
     - title: "yes"
